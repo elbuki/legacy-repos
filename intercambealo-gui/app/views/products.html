@@ -1,0 +1,112 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="request-product-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Request product</h4>
+      </div>
+        <div class="modal-body">
+          <p>You are going to request this product...</p>
+            <div class="card card-normal">
+              <h2 id="request-title"></h2>
+              <p id="request-description"></p>
+              <p><i id="request-owner"></i></p>
+            </div>
+          <p>But, what are you going to offer in return?</p>
+          <div class="product-carrousel">
+            <div ng-repeat="myProduct in carrousel">
+              <div class="card mini-card" product-id="{{ myProduct['0'] }}" ng-click="productClicked($event)">
+                <h4>{{ myProduct['1'] }}</h4>
+                <p>{{ myProduct['2'] }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary absolute-disable" ng-click="requestProduct($event)">Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="delete-product-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Are you sure?</h4>
+      </div>
+        <div class="modal-body">
+          <p>You're about to delete this product...</p>
+            <div class="card">
+              <h2 id="delete-title"></h2>
+              <p id="delete-description"></p>
+            </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" ng-click="deleteProduct($event)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="product-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+
+      <p>
+      <div class="modal-body">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Enter a name..." />
+        </div>
+        </p>
+
+        <p>
+        <div class="input-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" class="form-control" placeholder="Enter a description..." />
+        </div>
+        </p>
+
+        <p>
+        <div class="input-group">
+          <label for="name">Active?</label>
+          <input type="checkbox" id="state" class="form-control" />
+        </div>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-action="save" ng-click="createProduct($event)"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p><a class="btn btn-default action" role="button" ng-click="loadMine()">Show my products only</a></p>
+<p><a class="btn btn-primary action" role="button" ng-click="showCreateModal()">Create a new product</a></p>
+<div class="product-listing">
+  <div ng-repeat="product in productsQuery">
+      <div class="card">
+        <h2>{{ product['1'] }}</h2>
+        <p>{{ product['2'] }}</p>
+        <p><i>Owned by: {{ product['4'] }}</i></p>
+        <p ng-if="!filtered && product['3']"><a class="btn btn-primary" role="button" ng-click="showTransactionModal(product)" ng-disabled="!product['3']">Get it</a></p>
+        <p ng-if="!filtered && !product['3']"><a class="btn btn-primary" role="button" ng-disabled="!product['3']">Get it</a></p>
+        <p ng-if="filtered">
+          <a class="btn btn-default" role="button" ng-click="showEditModal(product)">Edit</a>
+          <a class="btn btn-danger" role="button" ng-click="showDeleteModal(product)">Delete</a>
+        </p>
+      </div>
+  </div>
+    </div>
+  </div>
+</div>

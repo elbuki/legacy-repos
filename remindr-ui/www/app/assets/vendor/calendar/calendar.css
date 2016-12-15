@@ -1,0 +1,15 @@
+.ionic_Calendar .calendar_Date .row.Daysheading {text-align:center;}
+.ionic_Calendar .txtCenter {text-align:center;}
+.ionic_Calendar .col.selMonth { background-color: #387ef5; color:white; }
+.ionic_Calendar .col.selDate { background-color: #387ef5; color:white; }
+.ionic_Calendar .col.selYear { background-color: #387ef5; color:white;  }
+.ionic_Calendar .col.fadeDateDisp, .col.fadeYear { background-color: #E9E9E9; color:#D5D5D5 }
+.ionic_Calendar .DaysDisplay .col{ border: 1px solid #F3F3F3; padding-top: 10px; font-weight: bolder; height: 40px;}
+.ionic_Calendar .DaysDisplay.row{ padding-left: 0px; padding-right: 0px; }
+.ionic_Calendar .MonthsDisplay.row{ padding-left: 0px; padding-right: 0px; }
+.ionic_Calendar .MonthsDisplay .col{ border: 1px solid #F3F3F3; padding-top: 30px; font-size: 18px;  height: 80px;}
+.ionic_Calendar .YearsDisplay.row{ padding-left: 0px; padding-right: 0px; }
+.ionic_Calendar .YearsDisplay .col{ border: 1px solid #F3F3F3; padding-top: 30px; font-size: 18px; height: 80px;}
+.ionic_Calendar .marginTop0 { margin-top: 0px !important;}
+.ionic_Calendar .paddingBottom0 { padding-bottom: 0px !important;}
+.ionic_Calendar .Daysheading_Label .col { padding-bottom: 0px !important;}

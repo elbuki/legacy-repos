@@ -1,0 +1,55 @@
+<ion-view view-title="Eventos">
+  <div class="bar bar-header">
+      <button class="button button-clear button-positive" ng-click="vm.selectToday()">Hoy</button>
+      <div class="h1 title">Eventos</div>
+      <button class="button button-clear button-positive" ng-click="vm.showForm('Crear')">Crear</button>
+  </div>
+  <ion-content class="padding has-header">
+    <my-calendar ng-model="vm.selectedDate" ng-change="vm.reloadEventsOnDate()"></my-calendar>
+    <div class="list" scroll="true">
+        <h5>Eventos para el {{vm.shortDateSelectedDate | date: 'd/M/yy'}}:</h5>
+        <div class="list">
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #1</h4>
+                <p>9:30</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #2</h4>
+                <p>10:40</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #3</h4>
+                <p>11:30</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #4</h4>
+                <p>12:30</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #5</h4>
+                <p>4:30</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #6</h4>
+                <p>6:30</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #7</h4>
+                <p>6:37</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+            <div class="item item-icon-right" type="item-text-wrap">
+                <h4>Evento #8</h4>
+                <p>9:30</p>
+                <i class="icon ion-ios-compose-outline"></i>
+            </div>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

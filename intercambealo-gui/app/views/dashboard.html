@@ -1,0 +1,43 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="accept-transaction-modal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Confirmation</h4>
+      </div>
+        <div class="modal-body">
+          <p>You're about to accept request from <i id="accept-username-request"></i> that states that you are going to get a <b id="accept-offered"></b> and give a <b id="accept-requested"></b> in return, are you sure to accept this transaction?</p>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="acceptTransaction($event)">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Received requests</h2>
+  <p><i>Listing received product requests, click any title to display more information</i></p>
+
+  <div class="panel-group" id="accordion">
+    <div ng-repeat="transaction in transactions">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="javascript:;" data-target="#collapse{{ transaction['0'] }}">{{ transaction['1'] }}</a>
+          </h4>
+        </div>
+        <div id="collapse{{ transaction['0'] }}" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>Sent by: <b>{{ transaction['4'] }}</b></p>
+            <p>He's giving <b>{{ transaction['3'] }}</b> in return.</p>
+            <p><a class="btn btn-primary" role="button" ng-click="showAcceptModal(transaction)">Accept transaction</a></p>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+{
+  "name": "blog-api",
+  "version": "0.0.1",
+  "description": "API used to manage all things related to my own blog engine.",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm install && nodemon app.js",
+    "test": "tape test/*.js",
+    "lint": "jshint app.js config/ helpers/ models/ routes/ test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/elbuki/blog-api.git"
+  },
+  "keywords": [
+    "blog",
+    "engine",
+    "api",
+    "posts",
+    "comments",
+    "replies",
+    "marco",
+    "carmona",
+    "soda",
+    "elbuki"
+  ],
+  "author": "Marco Carmona <manudo16@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elbuki/blog-api/issues"
+  },
+  "homepage": "https://github.com/elbuki/blog-api#readme",
+  "dependencies": {
+    "dotenv": "2.0.0",
+    "mongodb": "2.1.18",
+    "mongoose": "4.4.14",
+    "postmark": "1.2.1",
+    "restify": "4.0.4"
+  },
+  "devDependencies": {
+    "jslint": "0.9.6",
+    "nodemon": "1.9.2",
+    "tape": "4.5.1"
+  }
+}

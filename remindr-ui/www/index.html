@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ion-datetime-picker/release/ion-datetime-picker.min.css" rel="stylesheet">
+    <link href="app/assets/vendor/calendar/calendar.css" rel="stylesheet">
+    <link href="app/assets/styles/style.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="cordova.js"></script>
+
+    <!-- Custom modules -->
+    <script src="lib/ion-datetime-picker/release/ion-datetime-picker.min.js"></script>
+    <script src="app/assets/vendor/calendar/calendar.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/app-constants.js"></script>
+
+    <!-- Controllers -->
+    <script src="app/events/event-ctrl.js"></script>
+	<script src="app/classes/classes-list-ctrl.js"></script>
+    <script src="app/user/user-settings-ctrl.js"></script>
+    <script src="app/login/login-ctrl.js"></script>
+
+    <!-- Services -->
+    <script src="app/events/event-service.js"></script>
+
+    <!-- Resources -->
+    <script src="app/resources/rest-resource.js"></script>
+  </head>
+  <body ng-app="remindr">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

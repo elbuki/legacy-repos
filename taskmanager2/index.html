@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Home - Task Manager</title>
+	<link rel="stylesheet" type="text/css" href="css/materialize/css/materialize.min.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="css/materialize/js/materialize.min.js"></script>
+	<div class="navbar-fixed">
+		<nav class="nav-wrapper teal lighten-2">
+			<span class="brand-logo">Task manager</span>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="index.html" class="waves-effect waves-light">Home</a></li>
+				<li><a href="#loginmodal" class="waves-effect waves-light modal-trigger">Login</a></li>
+				<li><a href="about.html" class="waves-effect waves-light">About</a></li>		
+			</ul>
+		</nav>
+	</div>
+	<div class="slider fullscreen">
+		<ul class="slides">
+    		<li>
+				<img src="img/task.jpg">
+        		<div class="caption center-align">
+        			<i class="small material-icons">assignment</i>
+          			<h4>Manage your tasks</h4>
+          			<h5 class="light grey-text text-lighten-3">An easier way to check your tasks and maniplate them.</h5>
+        		</div>
+      		</li>
+      		<li>
+        		<img src="img/clients.jpg">
+        		<div class="caption center-align">
+        			<i class="small material-icons">account_box</i>
+          			<h4>Manage your clients</h4>
+          			<h5 class="light grey-text text-lighten-3">Create, edit and update your clients by using any device with an internet connection.</h5>
+        		</div>
+      		</li>
+      		<li>
+        		<img src="img/invoice.jpg">
+        		<div class="caption center-align">
+        			<i class="small material-icons">library_books</i>
+          			<h4>Manage your invoices</h4>
+          			<h5 class="light grey-text text-lighten-3">Need a way to have some order in your invoices? Not anymore.</h5>
+        		</div>
+      		</li>
+    	</ul>
+	</div>
+	<div id="buttons">
+		<a href="about.html" class="waves-effect waves-light btn">Learn more</a>
+		<a href="#loginmodal" class="waves-effect waves-light btn modal-trigger">Log in</a>
+	</div>
+  <div class="modal" id="loginmodal">
+    <div class="modal-content">
+      <form name="loginform">
+        <div class="card-panel red" id="error"><i class="small material-icons">report_problem</i> Please check your username or password.</div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input name="username" type="text" id="username">
+          <label for="username">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">vpn_key</i>
+          <input name="password" type="password" id="password">
+          <label for="password">Password</label>
+        </div>
+        <p>
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me?</label>
+        </p>      
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+      <a onclick="TASKMAN.login($('#username').val(), $('#password').val());" class="modal-action waves-effect waves-green btn-flat">Login</a>
+    </div>
+    </form>
+  </div>
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+<script type="text/javascript">
+	$(document).ready(function(){
+    $('.slider').slider({full_width: true});
+    $('.modal-trigger').leanModal({
+      dismissible: true,
+      opacity: .6,
+      in_duration: 300,
+      out_duration: 200,
+      }
+    );
+    if(localStorage['remembered']) {
+      var userRemembered = JSON.parse(localStorage['remembered']);
+      $('#username').val(userRemembered.user);
+      $('#password').val(userRemembered.password);
+    }
+  });  
+</script>
+<script type="text/javascript" src="js/application.js"></script>
+</body>
+</html>

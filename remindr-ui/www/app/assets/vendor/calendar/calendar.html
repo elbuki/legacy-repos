@@ -1,0 +1,25 @@
+<div class="ionic_Calendar">
+	<div class="calendar_Date" ng-show="UICalendarDisplay.Date">
+		<div class="row" style=" background-color: #3F3F3F;  color: white;">
+		  <div class="col txtCenter" ><i class="icon ion-chevron-left" ng-click="selectedMonthPrevClick()"></i></div>
+		  <div class="col col-75 txtCenter" ng-click="UIdisplayDatetoMonth()">{{dislayMonth}} {{displayYear}}</div>
+		  <div class="col txtCenter"><i class="icon ion-chevron-right"  ng-click="selectedMonthNextClick()"></i></div>
+		</div>
+		<div class="row Daysheading Daysheading_Label" style="background-color: #383737; color: white;">
+		  <div class="col">D</div><div class="col">L</div><div class="col">K</div><div class="col">M</div><div class="col">J</div><div class="col">V</div><div class="col">S</div>
+		</div>
+		<div class="row Daysheading DaysDisplay" ng-repeat = "rowVal in datesDisp  track by $index" ng-class="{'marginTop0':$first}">
+		  <div class="col" ng-repeat = "colVal in rowVal  track by $index" ng-class="{'fadeDateDisp':(colVal.type == 'oldMonth' || colVal.type == 'newMonth'), 'selDate':(colVal.date == displayDate && colVal.type == 'currentMonth')}"  ng-click="selectedDateClick(colVal)" >{{colVal.date}}</div>
+		</div>
+	</div>
+	<div class="calendar_Month" ng-show="UICalendarDisplay.Month">
+		<div class="row" style=" background-color: #3F3F3F;  color: white;">
+		  <div class="col txtCenter"><i class="icon ion-chevron-left" ng-click="selectedMonthYearPrevClick()" ng-hide="UICalendarDisplay.Month"></i></div>
+		  <div class="col col-75 txtCenter">{{displayYear}}</div>
+		  <div class="col txtCenter"><i class="icon ion-chevron-right" ng-click="selectedMonthYearNextClick()" ng-hide="UICalendarDisplay.Month"></i></div>
+		</div>
+		<div class="row txtCenter MonthsDisplay" ng-repeat = "rowVal in calMonths  track by $index" ng-class="{'marginTop0':$first}">
+		  <div class="col" ng-repeat = "colVal in rowVal  track by $index"  ng-class="(colVal.name == shortMonth) ? 'selMonth' : 'NonSelMonth'"  ng-click="selectedMonthClick(colVal.id)" >{{colVal.name}}</div>
+		</div>
+	</div>
+</div>

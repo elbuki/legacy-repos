@@ -1,0 +1,16 @@
+<ion-view view-title="Cursos">
+    <div class="bar bar-header">
+        <div class="h1 title">Cursos</div>
+        <button class="button button-clear button-positive" ng-click="vm.showForm('Crear')">Crear</button>
+    </div>
+    <ion-content class="padding has-header">
+        <div class="list">
+            <div class="item item-icon-right" ng-repeat="item in vm.items">
+                <h4>{{item}}</h4>
+                <h6>Marco Carmona</h6>
+                <span>804</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

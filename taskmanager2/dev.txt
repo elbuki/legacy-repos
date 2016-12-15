@@ -1,0 +1,104 @@
+Task Manager² Dev notes
+
+There has been a delay in the commits due to a git problem in my computer so the first commit is pushed in August 3rd.
+
+Here's the things I've done so far:
+
+	* Home page for mobile and desktop.
+	* Application object with all functions and properties.
+	* Login form with modal.
+	* Main screen with side navigator for mobile devices.
+
+--
+
+August 8th
+
+Developing about how the information should be displayed.
+
+August 9th
+
+User can now check and create new clients.
+Storage's insert function detects the type of object and appends it into the right collection.
+
+August 14th
+
+Created a new function that loads the information, actually is way better than the last one I made.
+User can now delete clients using their object ID.
+When there's no information in an array, a message will display.
+
+August 16th
+
+The user can now edit clients.
+Form autocompletion when editing a client.
+Few bug fixes
+
+August 17th
+
+User can now check, create, edit and delete invoices.
+
+Late August 17th
+
+Problem with the client dropdown fixed.
+Task CRUD
+
+August 18th
+
+Major bug fixes
+A lot of methods implemented
+Fix administrator checkbox in user edit
+User cannot delete himself
+Repeat password in user new/edit
+Administrator can be the only one to check all the users, normal users can only edit themselves
+Validations
+Responsive CSS for all the CRUD's
+Fixed index.html CSS
+QA session
+
+August 19th
+
+Housekeeping and commenting
+Minify js and CSS
+Apache
+
+--
+
+First QA Session - August 19th
+
+Clients can be added, edited or deleted, validations works fine.
+Users can be added, edited or deleted, validations works fine.  
+All links updated.
+
+Problems found
+
+Problem with tasks modals, Add button blocked with no reason. --FIXED--
+Problem with invoices modals, Add button blocked with no reason. --FIXED--
+User administrator check missing --FIXED--
+Other administrators than 'admin' can delete themselves --FIXED--
+Remember me check not implemented --FIXED--
+Message for client deletion when it has invoices or tasks --NOT IMPLEMENTED--
+
+--
+
+Color scheme used in main screen, should be used in the other ones...
+http://paletton.com/#uid=13i0u0kllllNjzxqVuLfLbV4-9v
+
+Test accordion
+
+<ul class="collapsible" data-collapsible="accordion" id="accordion">
+	<li>
+     	<div class="collapsible-header"><i class="material-icons">account_circle</i>Marco Carmona</div>
+    	<div class="collapsible-body">
+      	<div class="info">
+      		<p><i class="material-icons prefix">account_circle</i>Marco Carmona</p>
+      		<p><i class="material-icons prefix">person_pin</i>207410119</p>
+      		<p><i class="material-icons prefix">phone</i>87718365</p>
+      	</div>
+      	<div class="actions">
+      		<i class="material-icons">create</i>
+      		<i class="material-icons">delete</i>      		
+      	</div>
+      	</div>      
+    </li>
+</ul>
+
+-- soda, 2015 --

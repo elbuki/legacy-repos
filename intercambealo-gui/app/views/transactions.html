@@ -1,0 +1,43 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="delete-transaction-modal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Are you sure?</h4>
+      </div>
+        <div class="modal-body">
+          <p>You're about to delete a request to <i id="delete-username"></i> where you want to get a <b id="delete-requested"></b> and give a <b id="delete-offered"></b>.</p>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" ng-click="deleteTransaction($event)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Sent requests</h2>
+  <p><i>These are the requests that you sent to other users, click the title to see more infomation.</i></p>
+
+  <div class="panel-group" id="accordion">
+    <div ng-repeat="transaction in requestedTransactions">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="javascript:;" data-target="#collapse{{ transaction['0'] }}">{{ transaction['1'] }}</a>
+          </h4>
+        </div>
+        <div id="collapse{{ transaction['0'] }}" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>Owned by: <b>{{ transaction['2'] }}</b></p>
+            <p>You are giving <b>{{ transaction['3'] }}</b> in return.</p>
+            <p><a class="btn btn-danger" role="button" ng-click="showDeleteModal(transaction)">Delete</a></p>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+
+</div>

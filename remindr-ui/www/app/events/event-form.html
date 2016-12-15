@@ -1,0 +1,56 @@
+<ion-modal-view>
+    <ion-header-bar align-title="center">
+        <button class="button button-clear button-assertive">Eliminar</button>
+        <h1 class="title">{{vm.action}} evento</h1>
+        <button class="button button-clear button-positive" ng-click="vm.closeForm()">Cancelar</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input">
+              <input type="text" ng-model="vm.event.title" placeholder="Nombre">
+            </label>
+            <div class="item" ion-datetime-picker ng-model="vm.event.datetime">
+                <div class="row" ng-show="vm.event.datetime">
+                    <div class="col-40">
+                        <i class="icon ion-ios-calendar-outline"></i>
+                        {{vm.event.datetime | date: "yyyy-MM-dd"}}
+                    </div>
+                    <div class="col-offset-33 col-20">
+                        <i class="icon ion-ios-clock-outline"></i>
+                        {{vm.event.datetime | date: "H:mm"}}
+                    </div>
+                </div>
+                <span ng-show="!vm.event.datetime">Seleccionar fecha...</span>
+            </div>
+            <label class="item item-input">
+              <textarea ng-model="vm.event.description" placeholder="Descripción"></textarea>
+            </label>
+            <ion-checkbox ng-model="vm.event.isFromAClass">Pertenece a un curso</ion-checkbox>
+            <label class="item item-select" ng-show="vm.event.isFromAClass">
+                <select ng-model="vm.event.class_id">
+                    <option value="1">Class 1</option>
+                    <option value="2">Class 2</option>
+                    <option value="3">Class 3</option>
+                </select>
+            </label>
+            <ion-checkbox ng-model="vm.event.allowFrecuencies">Agregar frecuencia</ion-checkbox>
+            <label class="item item-input item-select" ng-show="vm.event.allowFrecuencies">
+                <input type="number" ng-model="vm.event.frequencyNumber" placeholder="Frecuencia">
+                <select ng-model="vm.event.frequencyTime">
+                    <option value="24">Día</option>
+                    <option value="168">Semana</option>
+                </select>
+            </label>
+            <ion-checkbox ng-model="vm.event.excludeWeekends">Excluir fines de semana</ion-checkbox>
+            <ion-checkbox ng-model="vm.event.private">Privado</ion-checkbox>
+            <ion-checkbox ng-model="vm.event.active">Activo</ion-checkbox>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar bar-balanced">
+	   <div class="button-bar">
+           <ion-spinner class="center-spinner" icon="spiral" ng-show="vm.saving"></ion-spinner>
+           <a class="button button-clear" ng-click="vm.save()" ng-show="!vm.saving">Guardar</a>
+	   </div>
+    </ion-footer-bar>
+    </div>
+</ion-modal-view>

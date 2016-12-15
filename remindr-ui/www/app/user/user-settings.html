@@ -1,0 +1,19 @@
+<ion-view view-title="Mi cuenta">
+  <ion-content class="padding">
+      <div class="list">
+          <div class="item item-divider">Mi cuenta</div>
+          <a class="item item-icon-left item-icon-right" type="item-text-wrap">
+              <i class="icon ion-university"></i>
+              <h2>Marco Carmona Torres</h2>
+              <p>mocarmonat@est.utn.ac.cr</p>
+              <i class="icon ion-ios-arrow-right"></i>
+          </a>
+          <a class="item item-icon-left" href="#/login">
+              <i class="icon ion-log-out"></i>
+                Cerrar sesión
+          </a>
+          <div class="item item-divider">Configuración de alertas</div>
+          <ion-toggle ng-model="settings.enableFriends">Eventos universitarios</ion-toggle>
+      </div>
+  </ion-content>
+</ion-view>

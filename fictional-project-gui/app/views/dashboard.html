@@ -1,0 +1,39 @@
+<div class="questionEntry" ng-repeat="question in questions track by $index">
+    <div class="question {{editMode ? 'editable' : ''}}" contenteditable="{{editMode}}" ng-model="question.question"></div>
+
+    <div ng-if="!question.answers.length" class="no-answers">
+        No answers added!
+    </div>
+
+    <div ng-if="question.answers.length">
+        <canvas class="chart chart-doughnut" chart-data="chartData[$index].pickedCounts" chart-labels="chartData[$index].answers"></canvas>
+
+        <div class="answers">
+            <table>
+                <tr class="headers">
+                    <th>Answer</th>
+                    <th>Responses</th>
+                    <th>Percentage</th>
+                </tr>
+                <tr ng-repeat="answer in question.answers" style="background-color: {{colors[$index]}}">
+                    <td contenteditable="{{editMode}}" ng-model="answer.answer"></td>
+                    <td class="picked" contenteditable="{{editMode}}" ng-model="answer.pickedCount" auto-generate></td>
+                    <td>{{calculatePercentage(chartData[$parent.$index].pickedCounts, answer.pickedCount)}}</td>
+                    <td ng-if="editMode" class="delete-answer"><span ng-click="removeAnswer($index, $parent.$parent.$parent.$index)" title="Remove '{{answer.answer}}'?" class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+    </div>
+
+    <a ng-if="editMode" class="btn btn-primary" ng-click="addAnswer($index)">Add answer</a>
+    <a ng-if="editMode" class="btn btn-danger" ng-click="removeQuestion($index)">Delete question</a>
+
+    <hr>
+</div>
+
+<div ng-if="!questions.length">
+    No questions has been added yet!
+
+    <hr>
+</div>

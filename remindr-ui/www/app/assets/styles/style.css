@@ -1,0 +1,27 @@
+.responsive-img {
+    max-width: 60%;
+    height: auto;
+}
+
+.login-background {
+    background: url(../images/background.jpg);
+    background-size: cover;
+}
+
+.login-greeter {
+    text-align: center;
+    background-color: rgba(53, 32, 13, 0.5);
+    color: #ffedce;
+}
+
+.login-greeter .content {
+    padding: 10px 10px 0px 10px;
+}
+
+.center-spinner {
+    margin: 0 auto;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

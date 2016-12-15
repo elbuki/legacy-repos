@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Users - Task Manager²</title>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="css/materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/application.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/materialize/css/materialize.min.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Aguafina+Script' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<script type="text/javascript">TASKMAN.utils.checkLoggedInUser()</script>
+	<ul id="slide-out" class="side-nav">
+		<li id="usertab" onclick="window.location.replace('users.html');">
+			<a>
+				<i class="medium material-icons">account_circle</i>
+			</a>
+			<span id="userlogged">username</span>
+		</li>
+		<li>
+			<a href="main.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">home</i>
+				<span>Home</span>
+			</a>
+		</li>
+		<li>
+			<a href="clients.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">people</i>
+				<span>Clients</span>
+			</a>
+		</li>
+		<li>
+			<a href="tasks.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">assignment</i>
+				<span>Tasks</span>
+			</a>
+		</li>
+		<li>
+			<a href="invoices.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">description</i>
+				<span>Invoices</span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:TASKMAN.logout();" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">input</i>
+				<span>Sign out</span>
+			</a>
+		</li>
+	</ul>
+	<div id="mobilenav">
+		<a href="#" data-activates="slide-out" class="button-collapse"><i class="small mdi-navigation-menu"></i></a>
+		<span id="title">Task manager²</span>
+	</div>
+	<div id="page-content">
+	<p id="no-records">No users found!</p>
+	<div id="records"></div>
+		<div id="newModal" class="modal modal-fixed-footer">
+			<div class="modal-content">
+				<div id="modalTitle">Add user</div>
+				<div class="input-field col s6">
+          			<i class="material-icons prefix">account_circle</i>
+          			<input name="name" type="text" id="fullname">
+          			<label for="name">Name</label>
+        		</div>
+        		<div class="input-field col s6">
+          			<i class="material-icons prefix">person_pin</i>
+          			<input name="user" type="text" id="user">
+          			<label for="user">User</label>
+        		</div>
+        		<div class="input-field col s6">
+          			<i class="material-icons prefix">vpn_key</i>
+          			<input name="password" type="password" id="password" placeholder="Password...">
+        		</div>
+        		<p>
+      				<input type="checkbox" id="admin" />
+      				<label for="admin">Administrator?</label>
+    			</p>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:TASKMAN.storage.queries.insert(TASKMAN.utils.wrapIntoObject());" class="modal-action waves-effect waves-green btn-flat disabled-link disabled">Add</a>
+				<a class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>				
+			</div>
+		</div>
+		<div id="editModal" class="modal modal-fixed-footer">
+			<div class="modal-content">
+				<div id="modalTitle">Edit user</div>
+				<p id="infoID">ID: <span id="objectID"></span></p>
+				<div class="input-field col s6">
+          			<i class="material-icons prefix">account_circle</i>
+          			<input name="name" type="text" id="fullname" placeholder="Name...">          
+        		</div>
+        		<div class="input-field col s6">
+          			<i class="material-icons prefix">person_pin</i>
+          			<input name="user" type="text" id="user" placeholder="Username...">
+        		</div>
+        		<div class="input-field col s6">
+          			<i class="material-icons prefix">vpn_key</i>
+          			<input name="password" type="password" id="password" placeholder="Password...">
+        		</div>
+        		<p>
+      				<input type="checkbox" id="adminedit" />
+      				<label for="adminedit">Administrator?</label>
+    			</p>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:TASKMAN.storage.queries.update(TASKMAN.utils.wrapIntoObject());" class="modal-action waves-effect waves-green btn-flat disabled-link disabled">Save</a>
+				<a class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>				
+			</div>
+		</div>
+		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+			<a class="modal-trigger btn-floating btn-large waves-effect waves-light red" href="#newModal">
+				<i class="material-icons">add</i>
+			</a>
+		</div>
+	</div>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">
+		#modalTitle {
+			padding-bottom: 0;
+		}
+		#editModal .modal-content .input-field {
+			margin-top: 0.5rem;
+		}
+	</style>
+	<script type="text/javascript">
+		$(".button-collapse").sideNav();
+		$('.modal-trigger').leanModal({
+      		dismissible: true,
+      		opacity: .6,
+      		in_duration: 300,
+      		out_duration: 200,
+      	});      	
+		TASKMAN.utils.showUsername();
+		TASKMAN.utils.printInPage();	
+		TASKMAN.utils.addValidations();	
+	</script>
+</body>
+</html>

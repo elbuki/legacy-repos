@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Home - Task Manager²</title>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="css/materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/application.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/materialize/css/materialize.min.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Aguafina+Script' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<script type="text/javascript">TASKMAN.utils.checkLoggedInUser()</script>
+	<ul id="slide-out" class="side-nav">
+		<li id="usertab" onclick="window.location.replace('users.html');">
+			<a>
+				<i class="medium material-icons">account_circle</i>
+			</a>
+			<span id="userlogged">username</span>
+		</li>
+		<li>
+			<a href="main.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">home</i>
+				<span>Home</span>
+			</a>
+		</li>
+		<li>
+			<a href="clients.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">people</i>
+				<span>Clients</span>
+			</a>
+		</li>
+		<li>
+			<a href="tasks.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">assignment</i>
+				<span>Tasks</span>
+			</a>
+		</li>
+		<li>
+			<a href="invoices.html" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">description</i>
+				<span>Invoices</span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:TASKMAN.logout()" class="waves-effect waves-teal">
+				<i class="small material-icons prefix">input</i>
+				<span>Sign out</span>
+			</a>
+		</li>
+	</ul>
+	<div id="mobilenav">
+		<a href="#" data-activates="slide-out" class="button-collapse"><i class="small mdi-navigation-menu"></i></a>
+		<span id="title">Task manager²</span>
+	</div>
+	<div id="page-content">
+		<div id="dashboard">
+			<img src="img/swipe-right.gif" id="swri">
+			<p id="mobile">Welcome to the Task Manager, swipe to the right to start.</p>
+			<p id="bigger">Welcome to the Task Manager, use the menus on the left hand-side to start.</p>
+		</div>		
+	</div>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript">
+		Materialize.toast('Sucessfully logged as: ' + JSON.parse(sessionStorage.userLogged).user + '.', 4000);
+		$(".button-collapse").sideNav();
+		TASKMAN.utils.showUsername();
+	</script>
+</body>
+</html>
