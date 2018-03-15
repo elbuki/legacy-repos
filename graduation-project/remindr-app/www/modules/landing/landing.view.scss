@@ -1,0 +1,109 @@
+.full-image-books {
+    background: url(./../img/books.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+#greeter {
+    margin: 0 auto;
+    width: 85%;
+    background-color: #000;
+    border-radius: 5px;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 83px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 83px 4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 83px 4px rgba(0,0,0,0.75);
+
+    * {
+        color: #fff;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,50px,0)
+    }
+
+    to {
+        transform: translate3d(0,-15px,0);
+        opacity: .8
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,50px,0)
+    }
+
+    to {
+        transform: translate3d(0,-15px,0);
+        opacity: .8
+    }
+}
+
+.animated {
+    animation-duration: 3s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+.bar-footer {
+    padding: 0;
+    -webkit-box-shadow: 0px -1px 45px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -1px 45px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px -1px 45px -1px rgba(0,0,0,0.75);
+
+    .row {
+        button.col.col-50 {
+            font-size: 20px;
+            color: #fff;
+            &#signup {
+                text-align: left;
+                font-weight: 500;
+            }
+            &#login {
+                text-align: right;
+            }
+        }
+    }
+}
+
+div.list.login-form {
+    margin-top: 3vh;
+}
+div.logo {
+
+    margin-top: 3vh;
+    h1 {
+        margin-top: 10px;
+    }
+    img {
+        height: 15vh;
+    }
+}
+
+.character-count {
+    input[name="password"] {
+        padding-right: 70px !important;
+    }
+    i.icon {
+        right: 10px;
+        font-weight: 500;
+        font-size: 15px;
+        & span.limit {
+            font-size: 13px;
+        }
+    }
+}

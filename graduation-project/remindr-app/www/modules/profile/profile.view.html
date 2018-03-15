@@ -1,0 +1,28 @@
+<ion-popover-view>
+    <ion-content scroll="false">
+        <div class="list" ng-controller="ProfileController as vm">
+            <div class="item item-icon-left item-text-wrap">
+                <i class="icon ion-person"></i>
+                <h2 ng-bind="vm.currentUser.fullName"></h2>
+            </div>
+            <div
+                class="item item-icon-left item-icon-right"
+                ng-click="vm.openNotifications()">
+                    <i class="icon ion-ios-filing"></i>
+                    Notifications
+                    <i class="icon ion-ios-arrow-right"></i>
+            </div>
+            <div class="item item-divider">Email</div>
+            <div class="item marquee">
+                <div angular-marquee>{{vm.currentUser.email}}</div>
+            </div>
+            <div class="item text-center">
+                <button
+                    class="button button-clear button-primary button-assertive"
+                    ng-click="vm.showConfirmDialog()">
+                        Logout
+                </button>
+            </div>
+        </div>
+    </ion-content>
+ </ion-popover-view>

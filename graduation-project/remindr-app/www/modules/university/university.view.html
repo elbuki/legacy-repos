@@ -1,0 +1,48 @@
+<ion-view title="{{vm.getCurrentTitle()}}">
+    <ion-nav-buttons side="left">
+        <button class="button back-button buttons button-clear header-item" ng-click="vm.goBack()">
+            <i class="icon ion-ios-arrow-back"> Back</i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+            class="button button-clear button-primary button-positive"
+            ng-click="vm.currentTab === vm.tabs.COURSES ? vm.openCourseModal() : vm.openEventModal()"
+            ng-show="vm.showAddButton()">
+                Add
+        </button>
+    </ion-nav-buttons>
+    <ion-content scroll="false">
+        <ng-include
+            src="'modules/university/university.about.view.html'"
+            ng-show="vm.currentTab === vm.tabs.ABOUT"></ng-include>
+        <ng-include
+            src="'modules/course/courses-list.view.html'"
+            ng-show="vm.currentTab === vm.tabs.COURSES"></ng-include>
+        <ng-include
+            src="'modules/university/university.calendar.view.html'"
+            ng-show="vm.currentTab === vm.tabs.CALENDAR"></ng-include>
+    </ion-content>
+    <ion-tabs class="tabs-icon-top tabs-color-positive">
+        <ion-tab
+            title="About"
+            icon-on="ion-ios-paper"
+            icon-off="ion-ios-paper-outline"
+            on-select="vm.selectTab(vm.tabs.ABOUT)">
+        </ion-tab>
+        <ion-tab
+            ng-if="vm.isRelated() && !vm.university.disabled"
+            title="Courses"
+            icon-on="ion-ios-list"
+            icon-off="ion-ios-list-outline"
+            on-select="vm.selectTab(vm.tabs.COURSES)">
+        </ion-tab>
+        <ion-tab
+            ng-if="vm.isRelated() && !vm.university.disabled"
+            title="Calendar"
+            icon-on="ion-ios-calendar"
+            icon-off="ion-ios-calendar-outline"
+            on-select="vm.selectTab(vm.tabs.CALENDAR)">
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

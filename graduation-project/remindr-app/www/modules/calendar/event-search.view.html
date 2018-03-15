@@ -1,0 +1,13 @@
+<div class="search-bar bar bar-header item-input-inset">
+    <label class="item-input-wrapper" style="margin-top: 0 !important;">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search by name or location" ng-model="searchTerm" ng-click="activateSearch()">
+    </label>
+    <button
+        type="button"
+        class="button button-clear button-primary button-positive"
+        ng-show="searchEnabled"
+        ng-click="disableSearch()">
+            Cancel
+    </button>
+</div>

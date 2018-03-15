@@ -1,0 +1,49 @@
+{
+  "name": "remindr-api",
+  "version": "0.0.1",
+  "description": "Remindr api",
+  "main": "app.js",
+  "engines": {
+    "node": ">=6.10.3"
+  },
+  "scripts": {
+    "dev": "nodemon app.js --exec 'npm run lint && npm test && node'",
+    "test": "tape './modules/**/*.test.js' './helpers/tests/*.test.js'",
+    "lint": "eslint './app.js' './modules/**/*.js' './helpers/**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:elbuki/remindr-api.gi"
+  },
+  "keywords": [
+    "remindr",
+    "api",
+    "elbuki",
+    "utn",
+    "practice",
+    "class",
+    "room",
+    "teachers",
+    "university",
+    "events"
+  ],
+  "author": {
+    "name": "Marco Carmona",
+    "email": "manudo16@gmail.com",
+    "url": "https://github.com/elbuki/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/elbuki/remindr-api#readme",
+  "dependencies": {
+    "bcrypt": "1.0.2",
+    "dotenv": "4.0.0",
+    "express": "4.15.2",
+    "mongodb": "2.2.26",
+    "mongoose": "4.9.9"
+  },
+  "devDependencies": {
+    "eslint": "3.19.0",
+    "nodemon": "1.11.0",
+    "tape": "4.6.3"
+  }
+}

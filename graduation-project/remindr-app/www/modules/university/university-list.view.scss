@@ -1,0 +1,33 @@
+.has-tabs-and-headers {
+    top: 93px;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) {
+    .search-input {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 50px !important;
+
+        .button.button-clear.button-positive {
+            margin-top: 0 !important;
+        }
+    }
+    .has-tabs-and-headers {
+        top: 113px !important;
+    }
+}
+
+.no-result {
+    text-align: center;
+    .item.item-text-wrap {
+        font-size: 12px;
+        font-style: italic;
+    }
+}
+
+button.button-primary {
+    .badge.badge-assertive {
+        top: -37px;
+        left: 18px;
+    }
+}

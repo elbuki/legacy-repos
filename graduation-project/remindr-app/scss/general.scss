@@ -1,0 +1,146 @@
+button.button-submit {
+    font-weight: 500 !important;
+}
+.bar.bar-header {
+    border-bottom: 1px solid #ddd;
+}
+.vertical-align-content {
+     display: flex;
+     align-content: center;
+     align-items: center;
+}
+.background-color {
+    background-color: rgba(56, 126, 245, 0.1);
+}
+.background-color-list {
+    background-color: #f7f7f7;
+}
+.bold {
+    font-weight: bold !important;
+}
+
+.item.item-input {
+
+    &.has-error {
+        border-right: 2.5px solid $assertive;
+        border-left: 2.5px solid $assertive;
+
+        input,
+        .input-label,
+        textarea::-webkit-input-placeholder,
+        input::-webkit-input-placeholder {
+            color: $assertive;
+        }
+    }
+}
+
+.back-button {
+    color: #387ef5 !important;
+}
+.no-padding, .no-padding .item-content {
+    padding: 0 !important;
+}
+.no-margin {
+    margin: 0 !important;
+}
+.remove-item {
+    button, a {
+        padding: 0;
+        right: 10.5px !important;
+        top: 4.5px !important;
+        i.icon {
+            margin: 0 auto;
+        }
+    }
+}
+.dont-truncate {
+    overflow: visible !important;
+    white-space: normal !important;
+}
+.calendar {
+    height: 315px;
+    padding: 5px 10px 5px 10px;
+}
+.event-box {
+    height: 97px;
+    .list {
+        margin-top: 5px;
+    }
+}
+.padding-top-50 {
+    padding-top: 50px;
+}
+.border-top {
+    border-top: 1px solid #ddd;
+    &.event-box .list {
+        margin: 0;
+    }
+}
+.title.title-left.header-item {
+  text-align: center;
+}
+.height-with-tabs {
+    &.scroll-view {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        &.with-search {
+            top: 51px !important;
+        }
+        &.with-overlap-search {
+            top: 46px !important;
+        }
+        &.bottom {
+            bottom: 50px;
+        }
+    }
+}
+body.keyboard-open {
+    .with-overlap-search {
+        bottom: 254px;
+    }
+}
+.marquee {
+    padding: 16px 0;
+}
+.event-search-results {
+    min-height: 0;
+    max-height: 0;
+    opacity: 0;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    background-color: #ddd;
+    &, & .scroll {
+        visibility: hidden;
+    }
+    &.open {
+        visibility: visible;
+        display: flex;
+        flex-flow: column;
+        min-height: 92.5%;
+        opacity: 1;
+
+        .scroll {
+            visibility: visible;
+        }
+    }
+}
+.event {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    h3 {
+        margin: 0;
+    }
+    .location {
+        font-size: 10.5px;
+    }
+    .time {
+        font-size: 12px;
+        font-weight: 400;
+    }
+}
+.platform-ios.platform-cordova:not(.fullscreen) .has-header {
+    top: 63px !important;
+}

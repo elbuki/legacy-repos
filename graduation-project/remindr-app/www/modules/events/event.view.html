@@ -1,0 +1,57 @@
+<ion-view title="Event">
+    <ion-nav-buttons side="left">
+        <button class="button back-button buttons button-clear header-item" ng-click="vm.goBack()">
+            <i class="icon ion-ios-arrow-back"> Back</i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="list">
+            <div class="item item-icon-left jumbotron">
+                <i class="icon ion-android-calendar"></i>
+                <h2 class="dont-truncate text-center" ng-bind="vm.event.title"></h2>
+            </div>
+            <div class="item item-divider">Location</div>
+            <div class="item item-text-wrap" ng-bind="vm.event.location"></div>
+            <div class="item item-divider">Dates</div>
+            <div class="item date-ranges">
+                <div class="datetime border">
+                        <div class="hour" ng-bind="vm.event.starts | date: 'shortTime'"></div>
+                        <div class="date" ng-bind="vm.event.starts | date: 'shortDate'"></div>
+                        <div class="label">
+                            Start date
+                        </div>
+                </div>
+                <div class="datetime">
+                        <div class="hour" ng-bind="vm.event.ends | date: 'shortTime'"></div>
+                        <div class="date" ng-bind="vm.event.ends | date: 'shortDate'"></div>
+                        <div class="label">
+                            End date
+                        </div>
+                </div>
+            </div>
+            <div class="item item-divider" ng-show="vm.event.notes">Notes</div>
+            <div class="item item-text-wrap" ng-bind="vm.event.notes" ng-show="vm.event.notes"></div>
+            <div class="item item-divider">Actions</div>
+            <div class="item no-padding two-buttons no-margin" ng-class="{'single-button': vm.event.createdFor !== 'personal' && !vm.event.admin}">
+                    <button
+                        class="button button-full button-dark no-margin icon-left ion-ios-calendar-outline"
+                        ng-show="vm.event.createdFor !== 'personal'"
+                        ng-click="vm.addToPersonal()">
+                            Save
+                    </button>
+                    <button
+                        class="button button-full button-energized no-margin icon-left ion-edit"
+                        ng-show="vm.event.createdFor === 'personal' || vm.event.admin"
+                        ng-click="vm.openEditModal()">
+                            Edit
+                    </button>
+                    <button
+                        class="button button-full button-assertive no-margin icon-left ion-ios-trash"
+                        ng-show="vm.event.createdFor === 'personal' || vm.event.admin"
+                        ng-click="vm.removeEvent()">
+                            Remove
+                    </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

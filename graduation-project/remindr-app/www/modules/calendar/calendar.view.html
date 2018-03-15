@@ -1,0 +1,24 @@
+<div class="calendar-wrapper">
+        <div class="calendar">
+            <rajkumar-calendar
+            display="vm.dateSelected"
+            events="events"></rajkumar-calendar>
+        </div>
+        <ion-scroll zooming="false" direction="y" class="event-box border-top">
+            <div class="list list-inset">
+                <div class="item event item-icon-right"
+                ng-repeat="event in vm.filteredEvents = (events | filter: vm.byDay | orderBy: 'starts')"
+                ng-click="vm.goToEvent(event)">
+                <h3>{{event.title}}</h3>
+                <span class="location">{{event.location}}</span> -
+                <span class="time"> {{event.starts | date: 'shortTime'}}</span>
+                <i class="icon ion-ios-arrow-forward"></i>
+            </div>
+        </div>
+        <div class="card no-result" ng-hide="vm.filteredEvents.length">
+            <div class="item item-text-wrap">
+                There are no events registered for this day.
+            </div>
+        </div>
+    </ion-scroll>
+</div>

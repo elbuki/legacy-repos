@@ -1,0 +1,17 @@
+<ion-scroll class="height-with-tabs bottom" direction="y">
+    <ul class="list">
+        <a class="item item-icon-right"
+            ng-repeat="course in vm.courses"
+            ui-sref="courses({courseid: course._id, universityid: vm.university._id})">
+            <h2>{{course.name}}</h2>
+            <p>{{course.type}}</p>
+            <h4>{{course.location}}</h4>
+            <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <div class="card no-result" ng-show="!vm.courses.length">
+            <div class="item item-text-wrap">
+                There's no courses registered for this university.
+            </div>
+        </div>
+    </ul>
+</ion-scroll>

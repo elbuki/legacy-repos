@@ -1,0 +1,41 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.hideNotifications()">Cancel</button>
+        <h1 class="title">Notifications</h1>
+    </ion-header-bar>
+    <ion-content class="background-color-list">
+        <ion-list>
+            <ion-item
+                class="item-text-wrap"
+                ng-repeat="enrollment in vm.enrollments">
+                    <p class="message" ng-show="enrollment.type === 'adding'">
+                        Enrollment request to <b ng-bind="enrollment.to.name"></b> from:
+                    </p>
+                    <p class="message" ng-show="enrollment.type === 'removal'">
+                        Removal request from <b ng-bind="enrollment.to.name"></b>:
+                    </p>
+                    <h3 ng-bind="enrollment.user.fullName"></h3>
+                    <h4 ng-bind="enrollment.user.email">marco.carmona@dotcreek.com</h4>
+                    <ion-option-button
+                        class="button-dark option-with-icon"
+                        ng-click="vm.answerEnrollment(false, enrollment)">
+                            <i class="icon {{enrollment.type === 'adding' ? 'ion-ios-help-empty' : 'ion-ios-person'}}"></i>
+                            <span>{{enrollment.type === 'adding' ? 'Ignore' : 'Keep'}}</span>
+                    </ion-option-button>
+                    <ion-option-button
+                        class="button-{{enrollment.type === 'adding' ? 'balanced' : 'assertive'}} option-with-icon"
+                        ng-click="vm.answerEnrollment(true, enrollment)">
+                            <i class="icon {{enrollment.type === 'adding' ? 'ion-ios-checkmark-empty' : 'ion-ios-minus-empty'}}"></i>
+                            <span>{{enrollment.type === 'adding' ? 'Accept' : 'Remove'}}</span>
+                    </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div class="card no-result" ng-show="!vm.enrollments.length">
+            <div class="item item-text-wrap">
+                Nothing to show here...
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

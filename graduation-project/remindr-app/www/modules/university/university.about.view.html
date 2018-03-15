@@ -1,0 +1,111 @@
+<ion-scroll class="height-with-tabs" ng-class="{'bottom': vm.university.disabled || vm.member() || vm.teacher()}" direction="y">
+    <div class="list">
+        <div class="item item-icon-left jumbotron">
+            <i class="icon ion-university"></i>
+            <h2 class="dont-truncate text-center" ng-bind="vm.university.name"></h2>
+        </div>
+        <div class="item no-padding"
+            ng-show="vm.unrequested()">
+                <button
+                    class="button button-full button-positive no-margin"
+                    ng-click="vm.enrollMe()">
+                        Send enroll request
+                </button>
+        </div>
+        <div class="item no-padding" ng-show="vm.university.disabled">
+            <button
+                class="button button-full button-calm no-margin icon-left ion-ios-checkmark"
+                ng-click="vm.showConfirm(false)">
+                    Enable
+            </button>
+        </div>
+        <div class="item no-padding"
+            ng-show="vm.requested()">
+                <button
+                    class="button button-full button-positive no-margin">
+                        Request sent
+                </button>
+        </div>
+        <div class="item no-padding"
+            ng-show="vm.member()"
+            ng-click="vm.unenroll()">
+                <button class="button button-full button-calm no-margin">
+                    Unenroll
+                </button>
+        </div>
+        <div class="item no-padding"
+            ng-show="vm.removalRequested()">
+                <button class="button button-full button-dark no-margin">
+                    Unenroll requested
+                </button>
+        </div>
+        <div class="item no-padding"
+            ng-show="vm.administrator() && !vm.disabled()">
+                <button class="button button-full button-stable no-margin">
+                    Enrolled as administrator
+                </button>
+        </div>
+        <div class="item no-padding"
+            ng-show="vm.teacher() && !vm.disabled()">
+                <button class="button button-full button-stable no-margin">
+                    Enrolled as teacher
+                </button>
+        </div>
+        <div class="item item-divider">Description</div>
+        <div class="item item-icon-right" ng-click="vm.descriptionModal.show()">
+            {{vm.university.about}}
+            <i class="icon ion-ios-arrow-right"></i>
+        </div>
+        <div class="item item-divider" ng-show="vm.isRelated()">Type</div>
+        <div class="item" ng-bind="vm.university.type" ng-show="vm.isRelated()"></div>
+        <div class="item item-divider" ng-show="vm.isRelated()">Locations</div>
+        <div
+            ng-show="vm.isRelated()"
+            class="item item-icon-right"
+            ng-repeat="address in vm.university.addresses"
+            ng-click="vm.openAddressModal(address)">
+                <h3>{{address.main}}</h3>
+                <p>{{address.city}} - {{address.state}}</p>
+                <i class="icon ion-ios-arrow-right"></i>
+        </div>
+        <div class="item item-divider" ng-show="vm.isRelated()">Email address{{vm.university.emails.length > 1 ? 'es': ''}}</div>
+        <a
+            class="item item-icon-right"
+            ng-repeat="email in vm.university.emails"
+            ng-href="mailto:{{email}}"
+            ng-show="vm.isRelated()">
+                {{email}}
+                <i class="icon ion-ios-email-outline"></i>
+        </a>
+        <div class="item item-divider" ng-show="vm.university.website">Website</div>
+        <a
+            class="item item-icon-right"
+            ng-click="vm.openWebsite()"
+            ng-show="vm.university.website">
+                {{vm.university.website}}
+                <i class="icon ion-ios-world-outline"></i>
+        </a>
+        <div class="item item-divider"
+            ng-show="vm.university.amIAdmin && !vm.university.disabled">
+            Settings
+        </div>
+        <div class="item no-padding two-buttons"
+            ng-show="vm.university.amIAdmin && !vm.university.disabled">
+                <button
+                    class="button button-full button-calm no-margin icon-left ion-ios-people"
+                    ng-click="vm.usersModal.show()">
+                        Users
+                </button>
+                <button
+                    class="button button-full button-energized no-margin icon-left ion-edit"
+                    ng-click="vm.editUniversity()">
+                        Edit
+                </button>
+                <button
+                    class="button button-full button-dark no-margin icon-left ion-ios-close"
+                    ng-click="vm.showConfirm(true)">
+                        Disable
+                </button>
+        </div>
+    </div>
+</ion-scroll>

@@ -1,0 +1,25 @@
+<event-search
+    placeholder="Search events"
+    events="vm.events"
+    search-enabled="vm.isSearchEnabled"
+    search-term="vm.searchTerm">
+</event-search>
+<div
+    class="event-search-results"
+    ng-class="{'open': vm.isSearchEnabled}">
+        <ion-scroll class="height-with-tabs with-overlap-search" direction="y">
+            <div class="item event item-icon-right"
+                ng-repeat="event in vm.filteredEvents = (vm.events | filter: vm.searchByTerm | orderBy: 'starts')"
+                ng-click="vm.goToEvent(event)">
+                <h3>{{event.title}}</h3>
+                <span class="location">{{event.location}}</span> -
+                <span class="time"> {{event.starts | date: 'EEEE MMMM d, h:mm a'}}</span>
+                <i class="icon ion-ios-arrow-forward"></i>
+            </div>
+        </ion-scroll>
+</div>
+<calendar
+    name="group"
+    display="vm.dateSelected"
+    events="vm.events">
+</calendar>

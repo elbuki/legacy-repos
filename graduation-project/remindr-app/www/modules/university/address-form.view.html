@@ -1,0 +1,90 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.addressFormModal.hide()">Cancel</button>
+        <h1 class="title">{{vm.editingAddress ? 'Edit' : 'Create'}} address</h1>
+        <button class="button button-clear button-primary button-positive
+            button-submit"
+            ng-click="vm.validateAddress()">
+                Save
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding background-color">
+        <div class="list login-form">
+            <form name="vm.addressForm" ng-submit="vm.validateAddress()" novalidate>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('addressForm','main')}">
+                        <input
+                            name="main"
+                            type="text"
+                            ng-model="vm.address.main"
+                            placeholder="First address..."
+                            required>
+                </label>
+                <label class="item item-input padding">
+                        <textarea
+                            name="secondary"
+                            placeholder="Secondary address..."
+                            ng-model="vm.address.secondary"></textarea>
+                </label>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('addressForm','city')}">
+                        <span class="input-label">City</span>
+                        <input
+                            name="city"
+                            type="text"
+                            ng-model="vm.address.city"
+                            required>
+                </label>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('addressForm','state')}">
+                        <span class="input-label">State</span>
+                        <input
+                            name="state"
+                            type="text"
+                            ng-model="vm.address.state"
+                            required>
+                </label>
+                <label
+                    class="item item-input item-select"
+                    ng-class="{'has-error': vm.hasError('addressForm','country')}">
+                        <div class="input-label">Country</div>
+                        <country-select
+                            name="country"
+                            ng-model="vm.address.country"
+                            cs-required></country-select>
+                </label>
+                <label class="item item-input">
+                        <span class="input-label">Zip code</span>
+                        <input
+                            name="zipCode"
+                            type="tel"
+                            maxlength="5"
+                            ng-model="vm.address.zipCode">
+                </label>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('addressForm','phoneNumber')}">
+                        <span class="input-label">Phone number</span>
+                        <input
+                            name="phoneNumber"
+                            type="tel"
+                            ng-model="vm.address.phoneNumber"
+                            required>
+                </label>
+                <label
+                    class="item item-input padding">
+                        <textarea
+                            name="notes"
+                            placeholder="Notes..."
+                            ng-model="vm.address.notes"
+                            rows="5"></textarea>
+                </label>
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>

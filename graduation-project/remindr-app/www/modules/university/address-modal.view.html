@@ -1,0 +1,32 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.addressModal.hide()">Cancel</button>
+        <h1 class="title">Location details</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item item-divider">Main</div>
+            <div class="item dont-truncate" ng-bind="vm.address.main"></div>
+            <div class="item item-divider" ng-show="vm.address.secondary">Secondary</div>
+            <div class="item dont-truncate" ng-bind="vm.address.secondary" ng-show="vm.address.secondary"></div>
+            <div class="item item-divider">City</div>
+            <div class="item dont-truncate" ng-bind="vm.address.city"></div>
+            <div class="item item-divider">State</div>
+            <div class="item dont-truncate" ng-bind="vm.address.state"></div>
+            <div class="item item-divider">Country</div>
+            <div class="item dont-truncate" ng-bind="vm.address.country"></div>
+            <div class="item item-divider" ng-show="vm.address.zipCode">Zip code</div>
+            <div class="item dont-truncate" ng-bind="vm.address.zipCode" ng-show="vm.address.zipCode"></div>
+            <div class="item item-divider">Phone number</div>
+            <div class="item dont-truncate" ng-bind="vm.address.phoneNumber"></div>
+            <div class="item item-divider" ng-show="vm.address.notes">Notes</div>
+            <div
+                class="item dont-truncate"
+                ng-show="vm.address.notes"
+                ng-bind="vm.address.notes">
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

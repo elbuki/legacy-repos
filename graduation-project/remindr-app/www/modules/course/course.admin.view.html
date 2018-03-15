@@ -1,0 +1,48 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.adminModal.hide()">Cancel</button>
+        <h1 class="title">{{vm.course.admin ? 'Change' : 'Assign'}} teacher</h1>
+    </ion-header-bar>
+    <ion-content scroll="false">
+        <div class="list">
+            <div class="item item-divider" ng-show="vm.course.admin">Current teacher</div>
+            <div class="item item-icon-right" ng-show="vm.course.admin">
+                <h2 ng-bind="vm.course.admin.fullName"></h2>
+                <h4 ng-bind="vm.course.admin.email"></h4>
+                <i class="icon ion-ios-checkmark-empty"></i>
+            </div>
+            <div class="item item-divider">Search</div>
+            <div class="bar bar-header item-input-inset search-input">
+                <label class="item-input-wrapper" style="{{vm.iOsSpecific}}">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input type="search"
+                        ng-model="vm.searchTerm"
+                        ng-change="vm.searchSubmitted = false"
+                        placeholder="Search by email or name...">
+                </label>
+                <button class="button button-clear button-positive" ng-click="vm.search()">
+                    Proceed
+                </button>
+            </div>
+            <div
+                class="card no-result"
+                ng-show="vm.noResults()">
+                    <div class="item item-text-wrap">
+                        No results...
+                    </div>
+            </div>
+            <div
+                class="item"
+                ng-repeat="user in vm.searchResults"
+                ng-click="vm.assignTeacher(user)">
+                    <h2 ng-bind="user.fullName"></h2>
+                    <h4 ng-bind="user.email"></h4>
+            </div>
+            <div class="text-center padding-top-50" ng-show="vm.searching">
+                <ion-spinner icon="ios"></ion-spinner>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

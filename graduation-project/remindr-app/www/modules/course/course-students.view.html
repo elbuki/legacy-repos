@@ -1,0 +1,30 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.studentsModal.hide()">Cancel</button>
+        <h1 class="title">Students</h1>
+    </ion-header-bar>
+    <ion-content class="background-color-list">
+        <ion-list delegate-handle="users-list">
+            <ion-item
+                collection-repeat="user in vm.users"
+                item-height="67px"
+                item-width="100%">
+                <h2 ng-bind="user.fullName"></h2>
+                <h4 ng-bind="user.email"></h4>
+                    <ion-option-button
+                        class="button-assertive option-with-icon"
+                        ng-click="vm.removeUser(user)">
+                            <i class="icon ion-ios-minus-empty"></i>
+                            <span>Remove</span>
+                    </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div class="card no-result" ng-show="!vm.users.length">
+            <div class="item item-text-wrap">
+                No students registered...
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,60 @@
+<ion-view title="Universities" hide-back-button="true">
+    <ion-nav-buttons side="left">
+        <button
+            class="button button-clear button-primary button-positive icon ion-ios-cog-outline"
+            ng-class="{'ion-ios-cog': vm.unread.length, 'ion-ios-cog-outline': !vm.unread.length}"
+            ng-click="vm.openProfile($event)">
+                <span
+                    class="badge badge-assertive"
+                    ng-show="vm.unread.length"
+                    ng-bind="vm.unread.length">
+                </span>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+            class="button button-clear button-primary button-positive"
+            ng-click="vm.openCreateModal()"
+            ng-show="vm.currentTab === vm.tabs.MINE">
+                Add
+        </button>
+        <button
+            class="button button-clear button-primary button-positive icon ion-ios-refresh-empty"
+            ng-click="vm.refresh()"
+            ng-show="vm.currentTab === vm.tabs.ENROLLED">
+        </button>
+    </ion-nav-buttons>
+    <div class="tabs-striped tabs-top tabs-color-positive">
+        <div class="tabs">
+            <a
+                class="tab-item active"
+                ng-class="{'active': vm.currentTab === vm.tabs.ENROLLED}"
+                ng-click="vm.selectTab(vm.tabs.ENROLLED)">
+                Enrolled
+            </a>
+            <a
+                class="tab-item"
+                ng-class="{'active': vm.currentTab === vm.tabs.MINE}"
+                ng-click="vm.selectTab(vm.tabs.MINE)">
+                Mine
+            </a>
+            <a
+                class="tab-item"
+                ng-class="{'active': vm.currentTab === vm.tabs.SEARCH}"
+                ng-click="vm.selectTab(vm.tabs.SEARCH)">
+                Search
+            </a>
+        </div>
+    </div>
+    <ion-content class="has-tabs-and-headers" scroll="false">
+        <ng-include
+            src="'modules/university/enrolled.view.html'"
+            ng-show="vm.currentTab === vm.tabs.ENROLLED"></ng-include>
+        <ng-include
+            src="'modules/university/mine.view.html'"
+            ng-show="vm.currentTab === vm.tabs.MINE"></ng-include>
+        <ng-include
+            src="'modules/university/search.view.html'"
+            ng-show="vm.currentTab === vm.tabs.SEARCH"></ng-include>
+    </ion-content>
+</ion-view>

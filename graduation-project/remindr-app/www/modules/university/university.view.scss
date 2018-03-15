@@ -1,0 +1,30 @@
+div.item.jumbotron {
+    padding-left: 30%;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    i.icon {
+        font-size: 60px;
+        width: 20%;
+        left: 21px;
+    }
+}
+button.button-full {
+    margin-top: 0;
+}
+div.item.one-button {
+    margin: 0 0 47px 0 !important;
+}
+div.item.two-buttons {
+    display: flex;
+    width: 100%;
+    border: 0;
+    margin: 0 0 47px 0;
+    button {
+        width: 50%;
+    }
+    &.single-button {
+        button {
+            width: 100% !important;
+        }
+    }
+}

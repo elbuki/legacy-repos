@@ -1,0 +1,56 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.editingEvent ? vm.cancelModal() : vm.eventFormModal.hide()">Cancel</button>
+        <h1 class="title">{{vm.editingEvent ? 'Edit' : 'Create'}} event</h1>
+        <button class="button button-clear button-primary button-positive
+            button-submit"
+            ng-click="vm.editingEvent ? vm.updateEvent() : vm.createEvent()">
+                Proceed
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding background-color">
+        <form name="vm.eventForm" ng-submit="vm.editingEvent ? vm.updateEvent() : vm.createEvent()" novalidate>
+            <label class="item item-input"
+                ng-class="{'has-error': vm.hasError('eventForm','title')}">
+                    <span class="input-label">Title</span>
+                    <input name="title"
+                        type="text"
+                        ng-model="vm.event.title"
+                        required>
+            </label>
+            <label class="item item-input"
+                ng-class="{'has-error': vm.hasError('eventForm','location')}">
+                    <span class="input-label">Location</span>
+                    <input name="location"
+                        type="text"
+                        ng-model="vm.event.location"
+                        required>
+            </label>
+            <div class="item date-ranges">
+                <div class="datetime border"
+                    ng-click="vm.editDate('starts')">
+                        <div class="hour" ng-bind="vm.event.starts | date: 'shortTime'"></div>
+                        <div class="date" ng-bind="vm.event.starts | date: 'shortDate'"></div>
+                        <div class="label">
+                            Start date
+                        </div>
+                </div>
+                <div class="datetime"
+                    ng-click="vm.editDate('ends')">
+                        <div class="hour" ng-bind="vm.event.ends | date: 'shortTime'"></div>
+                        <div class="date" ng-bind="vm.event.ends | date: 'shortDate'"></div>
+                        <div class="label">
+                            End date
+                        </div>
+                </div>
+            </div>
+            <label class="item item-input padding">
+                    <textarea name="notes"
+                        placeholder="Notes..."
+                        ng-model="vm.event.notes"></textarea>
+            </label>
+        </form>
+    </ion-content>
+</ion-modal-view>

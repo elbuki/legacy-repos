@@ -1,0 +1,88 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-positive"
+            ng-click="vm.registerModal.hide()">Cancel</button>
+        <h1 class="title">Create account</h1>
+        <button class="button button-clear button-primary button-positive
+            button-submit" ng-click="vm.createAccount()">
+                Register
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding background-color" scroll="false">
+        <div class="list login-form">
+            <form name="vm.registerForm" ng-submit="vm.createAccount()" novalidate>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('registerForm','firstName')}">
+                        <span class="input-label">First name</span>
+                        <input
+                            name="firstName"
+                            type="text"
+                            ng-model="vm.data.register.firstName"
+                            required>
+                </label>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('registerForm', 'lastName')}">
+                        <span class="input-label">Last name</span>
+                        <input
+                            name="lastName"
+                            type="text"
+                            ng-model="vm.data.register.lastName"
+                            required>
+                </label>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('registerForm', 'email')}">
+                        <span class="input-label">Email</span>
+                        <input
+                            name="email"
+                            type="email"
+                            ng-model="vm.data.register.email"
+                            ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
+                            required>
+                </label>
+                <label
+                    class="item item-input item-icon-right character-count"
+                    ng-class="{'has-error': vm.hasError('registerForm', 'password')}">
+                        <span class="input-label">Password</span>
+                        <input
+                            name="password"
+                            type="password"
+                            ng-model="vm.data.register.password"
+                            ng-change="vm.activateStrengthMeter(vm.data.register.password)"
+                            ng-model-options="{allowInvalid: true}"
+                            pattern=".{6,20}"
+                            maxlength="20"
+                            required>
+                            <i
+                                class="icon"
+                                ng-show="vm.passwordLength">
+                                <span
+                                    ng-bind="vm.passwordLength"
+                                    ng-class="vm.colorNumbers()"></span>
+                                <span class="limit">/20</span>
+                            </i>
+                </label>
+                <label
+                    class="item item-input"
+                    ng-class="{'has-error': vm.hasError('registerForm', 'repeat')}">
+                        <span class="input-label">Repeat</span>
+                        <input
+                            name="repeat"
+                            type="password"
+                            ng-model="vm.data.register.repeat"
+                            pattern=".{6,20}"
+                            maxlength="20"
+                            required>
+                </label>
+            </form>
+        </div>
+        <div class="text-center">
+            <a ng-click="vm.switchModal('registerModal', 'loginModal')">
+                Already have an account?
+            </a>
+        </div>
+    </ion-content>
+</ion-modal-view>

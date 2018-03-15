@@ -1,0 +1,36 @@
+<ion-view title="My calendar" hide-back-button="true">
+    <ion-nav-buttons side="right">
+        <button
+            class="button button-clear button-primary button-positive"
+            ng-click="vm.openAddModal()">
+                Add
+        </button>
+    </ion-nav-buttons>
+    <ion-content scroll="false">
+        <event-search
+            placeholder="Search events"
+            events="vm.events"
+            search-enabled="vm.isSearchEnabled"
+            search-term="vm.searchTerm">
+        </event-search>
+        <div
+            class="event-search-results"
+            ng-class="{'open': vm.isSearchEnabled}">
+                <ion-scroll class="height-with-tabs with-overlap-search" direction="y">
+                    <div class="item event item-icon-right"
+                        ng-repeat="event in vm.filteredEvents = (vm.events | filter: vm.searchByTerm | orderBy: 'starts')"
+                        ng-click="vm.goToEvent(event)">
+                        <h3>{{event.title}}</h3>
+                        <span class="location">{{event.location}}</span> -
+                        <span class="time"> {{event.starts | date: 'EEEE MMMM d, h:mm a'}}</span>
+                        <i class="icon ion-ios-arrow-forward"></i>
+                    </div>
+                </ion-scroll>
+        </div>
+        <calendar
+            name="personal"
+            display="vm.dateSelected"
+            events="vm.events">
+        </calendar>
+    </ion-content>
+</ion-view>

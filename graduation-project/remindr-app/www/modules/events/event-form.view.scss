@@ -1,0 +1,17 @@
+.item.date-ranges {
+    padding: 10px;
+    .datetime {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        .hour {
+            font-weight: bold;
+        }
+        .date {
+            font-size: 14px;
+        }
+        &.border {
+            border-right: 1px solid #ddd;
+        }
+    }
+}

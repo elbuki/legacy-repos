@@ -1,0 +1,60 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.usersModal.hide()">Cancel</button>
+        <h1 class="title">Users</h1>
+    </ion-header-bar>
+    <div class="tabs-striped tabs-top tabs-color-positive">
+        <div class="tabs">
+            <a
+                class="tab-item active"
+                ng-class="{'active': vm.currentTabUsers === vm.tabs.TEACHERS}"
+                ng-click="vm.selectTabUsers(vm.tabs.TEACHERS)">
+                Teachers
+            </a>
+            <a
+                class="tab-item"
+                ng-class="{'active': vm.currentTabUsers === vm.tabs.STUDENTS}"
+                ng-click="vm.selectTabUsers(vm.tabs.STUDENTS)">
+                Students
+            </a>
+        </div>
+    </div>
+    <ion-content class="has-tabs-and-headers">
+        <ion-list delegate-handle="users-list">
+            <ion-item
+                collection-repeat="user in collection = vm.selectedCollection()"
+                item-height="67px"
+                item-width="100%">
+                <h2 ng-bind="user.fullName"></h2>
+                <h4 ng-bind="user.email"></h4>
+                <ion-option-button
+                    class="button-assertive option-with-icon"
+                    ng-click="vm.removeUser(user)">
+                        <i class="icon ion-ios-minus-empty"></i>
+                        <span>Remove</span>
+                </ion-option-button>
+                <ion-option-button
+                    ng-if="vm.currentTabUsers === vm.tabs.TEACHERS"
+                    class="button-calm option-with-icon"
+                    ng-click="vm.makeAsStudent(user)">
+                        <i class="icon ion-university"></i>
+                        <span>Student</span>
+                </ion-option-button>
+                <ion-option-button
+                    ng-if="vm.currentTabUsers === vm.tabs.STUDENTS"
+                    class="button-dark option-with-icon"
+                    ng-click="vm.makeAsTeacher(user)">
+                        <i class="icon ion-ios-personadd"></i>
+                        <span>Teacher</span>
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div class="card no-result" ng-show="!collection.length">
+            <div class="item item-text-wrap">
+                No {{vm.currentTabUsers === vm.tabs.TEACHERS ? 'teachers' : 'students'}} registered...
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

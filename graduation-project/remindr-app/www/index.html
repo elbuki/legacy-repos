@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Remindr</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <link href="css/ionic.app.min.css" rel="stylesheet">
+
+    <script src="lib/bluebird/js/browser/bluebird.min.js"></script>
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic.cloud.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="lib/ng-country-select/dist/ng-country-select.min.js"></script>
+    <script src="lib/angular-marquee/src/angular-marquee.js"></script>
+    <script src="lib/angular-bluebird-promises/dist/angular-bluebird-promises.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- Third party plugin -->
+
+    <!-- your app's js -->
+    <script src="app.js"></script>
+
+    <script src="modules/shared/httpInterceptor.factory.js"></script>
+    <script src="modules/shared/rest.resource.js"></script>
+    <script src="modules/shared/network-activity-indicator.service.js"></script>
+
+    <script src="modules/shared/toast.service.js"></script>
+    <script src="modules/shared/user.service.js"></script>
+    <script src="modules/university/university.service.js"></script>
+    <script src="modules/course/course.service.js"></script>
+    <script src="modules/events/events.service.js"></script>
+    <script src="modules/enrollment/enrollment.service.js"></script>
+
+    <script src="modules/calendar/calendar.directive.js"></script>
+    <script src="modules/calendar/event-search.directive.js"></script>
+
+    <script src="modules/landing/landing.controller.js"></script>
+    <script src="modules/dashboard/dashboard.controller.js"></script>
+    <script src="modules/profile/calendar.controller.js"></script>
+    <script src="modules/profile/profile.controller.js"></script>
+    <script src="modules/university/university-list.controller.js"></script>
+    <script src="modules/university/university.controller.js"></script>
+    <script src="modules/course/course.controller.js"></script>
+    <script src="modules/events/event.controller.js"></script>
+
+    <!-- Third party -->
+    <script src="modules/calendar/assets/calendar.js"></script>
+  </head>
+  <body ng-app="remindr">
+    <ion-nav-bar class="bar-stable">
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

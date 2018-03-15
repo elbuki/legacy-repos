@@ -1,0 +1,37 @@
+<div class="bar bar-header item-input-inset search-input">
+    <label class="item-input-wrapper" style="{{vm.iOsSpecific}}">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search"
+            ng-model="vm.searchTerm"
+            ng-change="vm.clearSearch()"
+            placeholder="Search by name">
+    </label>
+    <button class="button button-clear button-positive" ng-click="vm.search()">
+        Proceed
+    </button>
+</div>
+<ion-scroll class="height-with-tabs with-search" direction="y">
+    <ul class="list">
+        <a class="item item-icon-right"
+            ng-repeat="university in vm.universities.found"
+            ng-click="vm.goToUniversity(university)">
+            <h2>{{university.name}}</h2>
+            <p>{{university.about}}</p>
+            <h4>{{university.addresses[0].city}} - {{university.addresses[0].state}}</h4>
+            <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <div class="card no-result" ng-show="vm.searchTerm && vm.searchFinished && !vm.universities.found.length">
+            <div class="item item-text-wrap">
+                No universities found
+            </div>
+        </div>
+        <div class="text-center padding-top-50" ng-show="vm.searchSubmitted">
+            <ion-spinner></ion-spinner>
+        </div>
+        <div class="card no-result" ng-show="!vm.searchSubmitted && !vm.searchFinished">
+            <div class="item item-text-wrap">
+                Type something above and then tap 'Proceed'...
+            </div>
+        </div>
+    </ul>
+</ion-scroll>

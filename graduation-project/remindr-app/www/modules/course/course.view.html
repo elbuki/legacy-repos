@@ -1,0 +1,39 @@
+<ion-view title="{{vm.getCurrentTitle()}}" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button back-button buttons button-clear header-item" ng-click="vm.goBack()">
+            <i class="icon ion-ios-arrow-back"> Back</i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+            class="button button-clear button-primary button-positive"
+            ng-click="vm.openEventModal()"
+            ng-show="(vm.currentTab === vm.tabs.CALENDAR) &&
+            (vm.course.amIAdmin && !vm.course.amIMember && !vm.course.disabled)">
+                Add
+        </button>
+    </ion-nav-buttons>
+    <ion-content scroll="false">
+        <ng-include
+            src="'modules/course/course.about.view.html'"
+            ng-show="vm.currentTab === vm.tabs.ABOUT"></ng-include>
+        <ng-include
+            src="'modules/course/course.calendar.view.html'"
+            ng-show="vm.currentTab === vm.tabs.CALENDAR"></ng-include>
+    </ion-content>
+    <ion-tabs class="tabs-icon-top tabs-color-positive">
+        <ion-tab
+            title="About"
+            icon-on="ion-ios-paper"
+            icon-off="ion-ios-paper-outline"
+            on-select="vm.selectTab(vm.tabs.ABOUT)">
+        </ion-tab>
+        <ion-tab
+            ng-if="vm.isRelated() || vm.member()"
+            title="Calendar"
+            icon-on="ion-ios-calendar"
+            icon-off="ion-ios-calendar-outline"
+            on-select="vm.selectTab(vm.tabs.CALENDAR)">
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

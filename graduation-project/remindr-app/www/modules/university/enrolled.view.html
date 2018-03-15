@@ -1,0 +1,17 @@
+<ion-scroll class="height-with-tabs" direction="y">
+    <ul class="list">
+        <a class="item item-icon-right"
+            ng-repeat="university in vm.universities.enrolled"
+            ng-click="vm.goToUniversity(university)">
+            <h2>{{university.name}}</h2>
+            <p>{{university.type}}</p>
+            <h4>{{university.addresses[0].city}} - {{university.addresses[0].state}}</h4>
+            <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <div class="card no-result" ng-show="!vm.universities.enrolled.length">
+            <div class="item item-text-wrap">
+                You are not enrolled to any university, tap the search tab above to find one.
+            </div>
+        </div>
+    </ul>
+</ion-scroll>

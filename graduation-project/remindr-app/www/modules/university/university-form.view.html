@@ -1,0 +1,99 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear button-primary button-assertive"
+            ng-click="vm.cancel()">Cancel</button>
+        <h1 class="title">{{vm.editing ? 'Edit' : 'Create'}} university</h1>
+        <button class="button button-clear button-primary button-positive
+            button-submit"
+            ng-click="vm.submit()">
+                Proceed
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding background-color">
+        <div class="login-form">
+            <form name="vm.universityForm" novalidate>
+                <label class="item item-input"
+                    ng-class="{'has-error': vm.hasError('universityForm','name')}">
+                        <span class="input-label">Name</span>
+                        <input name="name"
+                            type="text"
+                            ng-model="vm.university.name"
+                            required>
+                </label>
+                <div class="item item-divider item-icon-right">
+                    Locations
+                    <i class="icon ion-ios-plus-empty"
+                        ng-click="vm.showAddressForm()"></i>
+                </div>
+                <ion-list can-swipe="true" delegate-handle="location-list">
+                    <ion-item
+                        class="item-icon-right"
+                        ng-repeat="address in vm.university.addresses track by $index"
+                        ng-click="vm.editAddress(address, $index)">
+                            <h3>{{address.main}}</h3>
+                            <p>{{address.city}} - {{address.state}}</p>
+                            <i class="icon ion-ios-compose-outline"></i>
+                            <ion-option-button class="button-assertive"
+                                ng-click="vm.removeAddress($index)">
+                                    Remove
+                            </ion-option-button>
+                    </ion-item>
+                </ion-list>
+                <label class="item item-input padding"
+                    ng-class="{'has-error': vm.hasError('universityForm','about')}">
+                        <textarea name="about"
+                            placeholder="About the university..."
+                            ng-model="vm.university.about"
+                            required></textarea>
+                </label>
+                <label class="item item-input"
+                    ng-class="{'has-error': vm.hasError('universityForm','type')}">
+                        <span class="input-label">Type</span>
+                        <input name="type"
+                            type="text"
+                            ng-model="vm.university.type"
+                            required>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Block duration
+                    </div>
+                    <select ng-model="vm.university.blockDuration">
+                        <option value=""></option>
+                        <option value="BIMESTER">Bimester</option>
+                        <option value="TRIMESTER">Trimester</option>
+                        <option value="QUADMESTER">Quadmester</option>
+                        <option value="SEMESTER">Semester</option>
+                    </select>
+                </label>
+                <div class="item item-divider item-icon-right">
+                    Email addresses
+                    <i class="icon ion-ios-plus-empty"
+                        ng-click="vm.addEmail()"></i>
+                </div>
+                <div class="item item-input item-button-right remove-item"
+                    ng-repeat="email in vm.university.emails track by $index"
+                    ng-class="{'has-error': vm.hasError('universityForm','email' + $index)}">
+                        <input name="email{{$index}}"
+                            type="email"
+                            ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
+                            placeholder="Email {{$index + 1}}"
+                            ng-model="vm.university.emails[$index]" />
+                        <a class="button button-assertive" ng-click="vm.removeEmail($index)">
+                            <i class="icon ion-android-close"></i>
+                        </a>
+                </div>
+                <label class="item item-input"
+                    ng-class="{'has-error': vm.hasError('universityForm','website')}">
+                        <span class="input-label">Website</span>
+                        <input name="website"
+                            type="url"
+                            ng-model="vm.university.website"
+                            ng-model-options="{allowInvalid: true}"
+                            required>
+                </label>
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>
